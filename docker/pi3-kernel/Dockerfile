@@ -9,11 +9,9 @@ RUN git clone --depth=1 https://github.com/raspberrypi/linux.git ~/linux
 
 RUN \
 	cd ~/linux;\
-	KERNEL=kernel;\
+	KERNEL=kernel7;\
 	make ARCH=arm CROSS_COMPILE=/root/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf- bcm2709_defconfig
 	
 RUN \
-	cd ~/linux;\
-	KERNEL=kernel;\
-	make -j5 ARCH=arm CROSS_COMPILE=/root/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+	cd ~/linux; make -j5 ARCH=arm CROSS_COMPILE=/root/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf- zImage modules dtbs
 
